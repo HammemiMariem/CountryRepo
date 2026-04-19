@@ -18,10 +18,10 @@ pipeline {
             steps {
                 sh 'docker build . -t my-country-service:$BUILD_NUMBER'
                 withCredentials([string(credentialsId: 'dockerhubpaswd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u HammemiMariem -p ${dockerhubpwd}'
+                    sh 'docker login -u mariem2024 -p ${dockerhubpwd}'
                 }
-                sh 'docker tag my-country-service:$BUILD_NUMBER HammemiMariem/my-country-service:$BUILD_NUMBER'
-                sh 'docker push HammemiMariem/my-country-service:$BUILD_NUMBER'
+                sh 'docker tag my-country-service:$BUILD_NUMBER mariem2024/my-country-service:$BUILD_NUMBER'
+                sh 'docker push mariem2024/my-country-service:$BUILD_NUMBER'
             }
         }
         stage('Deploy microservice') {
